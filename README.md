@@ -1,6 +1,7 @@
 # 100meter
  
 A simple web app for checking the distance you travelled from a set point.
+Create to help comply with new Israeli COVID-19 regulations. Not accurate due to browser GPS limitations. Use at own risk.
 
 Requires allowing location services to be enabled.
 

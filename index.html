@@ -21,20 +21,23 @@
 
 
 <body>
-
 <div class="bg">
-  <div class="header">
-    <div class="status"> Tracking your location </div>
-     <div class="distanceTitle"> Distance <p>
-          <span id="distance">0</span> m <p>
-          <button onclick="restart()" class="btn"> Reset</button>
-      </div>
-    </div>
-    
-  <div class="footer">
-      <div class="footerText"> This app is not really accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter-app">Contribute your code</a>
-  </div>
+<div class="header">
 
+<div id="progress">
+  <div id="progressBar">0m</div>
+</div>
+
+<div class="status"> Tracking your location </div>
+
+ <div class="distanceTitle"> Distance <p>
+      <span id="distance">0</span> m <p>
+      <button onclick="restart()" class="btn"> Reset</button>
+</div>
+    
+<div class="footer">
+    <div class="footerText"> This app is not really accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter-app">Contribute your code</a>
+</div>
 
 </body>
 
@@ -54,6 +57,10 @@ else {
 //init stuff
 document.getElementById('distance').innerHTML = "0";
 var startPos;
+var distance;
+var progBar = document.getElementById("progressBar")
+
+
 
 //get current location
 navigator.geolocation.getCurrentPosition(function(position) {
@@ -63,10 +70,46 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
 //start tracking location
 navigator.geolocation.watchPosition(function(position) {
-document.getElementById('distance').innerHTML =
-    calculateDistance(startPos.coords.latitude, startPos.coords.longitude,
+distance = calculateDistance(startPos.coords.latitude, startPos.coords.longitude,
                       position.coords.latitude, position.coords.longitude);
-});
+document.getElementById('distance').innerHTML = distance;
+
+//update progress bar
+if (distance >= 100) {
+      
+      progBar.style.width = 100 + "%";
+      progBar.innerHTML = "Too Far!";
+      window.navigator.vibrate(200);
+      
+      } else {
+      
+      progBar.style.width = distance + "%";
+      progBar.innerHTML = "";
+      }
+    });
+
+
+
+
+/*var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        
+      }
+    }
+  }
+}*/
+
 
 //some math
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -91,6 +134,10 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function restart(){
   location.reload();
 }
+
+
+
+
 
 </script>
 

@@ -1,6 +1,7 @@
 body, html {
   height: 100%;
   margin: 0;
+  overflow: hidden;
 
 }
 
@@ -59,10 +60,10 @@ body, html {
   border: 1px solid #FFFFFF;
   color: white;
   padding: 20px 40px;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   font-family: Open Sans;
-  font-style: normal;
+  font-style: nomal;
   font-weight: 200;
   border-radius: 8px;
 }
@@ -120,3 +121,20 @@ body, html {
   }
 }
 
+#progress {
+  width: 100%;
+  background-color: rgba(255,255,255,.15);
+}
+
+#progressBar {
+  width: 10%;
+  height: 30px;
+  background-color: rgba(255,255,255,.25);
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 14px;
+}

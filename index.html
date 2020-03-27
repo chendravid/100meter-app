@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- No business purposes or anything - just curious if anyone is using the app! -->
+    <!-- Global site tag (gtag.js) - Google Analytics.  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162050612-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-162050612-1');
+    </script>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+ 
+</head>
+
+
+<body>
+
+<div class="bg">
+  <div class="header">
+    <div class="status"> Tracking your location </div>
+     <div class="distanceTitle"> Distance <p>
+          <span id="distance">0</span> m <p>
+          <button onclick="restart()" class="btn"> Reset</button>
+      </div>
+    </div>
+    
+  <div class="footer">
+      <div class="footerText"> This app is not really accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter.me">Contribute some code</a>
+  </div>
+
+
+</body>
+
+
+<!-- Location script start -->
+
+<script>
+
+// check for Geolocation support
+if (navigator.geolocation) {
+  console.log('Geolocation is supported!');
+}
+else {
+  console.log('Geolocation is not supported for this Browser/OS version yet.');
+}
+
+//init stuff
+document.getElementById('distance').innerHTML = "0";
+var startPos;
+
+//get current location
+navigator.geolocation.getCurrentPosition(function(position) {
+  startPos = position;
+});
+
+
+//start tracking location
+navigator.geolocation.watchPosition(function(position) {
+document.getElementById('distance').innerHTML =
+    calculateDistance(startPos.coords.latitude, startPos.coords.longitude,
+                      position.coords.latitude, position.coords.longitude);
+});
+
+//some math
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    var R = 6371e3; // m
+    var dLat = (lat2 - lat1).toRad();
+    var dLon = (lon2 - lon1).toRad(); 
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+            Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+    var d = R * c;
+    console.log("distance="+d + "R = "+ R);
+    return Math.round(d);
+    
+    } 
+    
+    Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+}
+
+//reload page to reset location. Too lazy to do it otherwise.
+function restart(){
+  location.reload();
+}
+
+</script>
+
+</body>
+</html>

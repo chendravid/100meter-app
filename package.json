@@ -1,0 +1,27 @@
+{
+  "name": "100meters",
+  "version": "1.0.0",
+  "description": "100meters",
+  "main": "app.js",
+  "engines": {
+    "node": "12.16.0",
+    "npm": "6.13.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chendravid/App.git"
+  },
+  "author": "Chen Ravid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chendravid/App/issues"
+  },
+  "homepage": "https://github.com/chendravid/App#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "heroku-ssl-redirect": "0.0.4"
+  }
+}

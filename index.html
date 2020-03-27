@@ -2,47 +2,46 @@
 <html>
 <head>
 
-    <!-- No business purposes or anything - just curious if anyone is using the app! -->
-    <!-- Global site tag (gtag.js) - Google Analytics.  -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162050612-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Yeah, using GA. No business purposes or anything - just curious if anyone is using the app! -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162050612-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', 'UA-162050612-1');
-    </script>
+    gtag('config', 'UA-162050612-1');
+  </script>
 
-
+  <!-- Some definitions -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
  
 </head>
 
-
+<!-- It's HTML time! -->
 <body>
-<div class="bg">
-<div class="header">
+  <div class="bg">
+  <div class="header">
 
-<div id="progress">
-  <div id="progressBar">0m</div>
-</div>
+  <div id="progress">
+    <div id="progressBar">0m</div>
+  </div>
 
-<div class="status"> Tracking your location </div>
+  <div class="status"> Tracking your location </div>
 
- <div class="distanceTitle"> Distance <p>
-      <span id="distance">0</span> m <p>
-      <button onclick="restart()" class="btn"> Reset</button>
-</div>
-    
-<div class="footer">
-    <div class="footerText"> This app is not really accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter-app">Contribute your code</a>
-</div>
+  <div class="distanceTitle"> Distance <p>
+        <span id="distance">0</span> m <p>
+        <button onclick="restart()" class="btn"> Reset</button>
+  </div>
+      
+  <div class="footer">
+      <div class="footerText"> This app is not really accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter-app">Contribute your code</a>
+  </div>
 
 </body>
 
 
-<!-- Location script start -->
+<!-- JS stuff -->
 
 <script>
 
@@ -60,13 +59,10 @@ var startPos;
 var distance;
 var progBar = document.getElementById("progressBar")
 
-
-
 //get current location
 navigator.geolocation.getCurrentPosition(function(position) {
   startPos = position;
 });
-
 
 //start tracking location
 navigator.geolocation.watchPosition(function(position) {
@@ -87,28 +83,6 @@ if (distance >= 100) {
       progBar.innerHTML = "";
       }
     });
-
-
-
-
-/*var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        
-      }
-    }
-  }
-}*/
 
 
 //some math
@@ -134,10 +108,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function restart(){
   location.reload();
 }
-
-
-
-
 
 </script>
 

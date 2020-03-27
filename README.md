@@ -2,7 +2,7 @@
  
 A simple web app for checking the distance you travelled from a set point (Which should be your home unless you're naughty).
 
-Created to help comply with new Israeli COVID-19 regulations. Not accurate due to browser GPS limitations. Use at own risk.
+Created to help comply with new Israeli COVID-19 regulations, requiring citizens to remain no more than 100m from home. Not accurate due to browser GPS limitations. Use at own risk.
 
 Requires allowing location services to be enabled.
 

@@ -34,7 +34,6 @@ body, html {
   font-size: 14px;
   text-align: center;
   line-height: 6px;
-  
   color: black;
 }
 
@@ -56,16 +55,16 @@ body, html {
 }
 
 .btn {
-  background-color: rgba(255,255,255,.25);
-  border: 1px solid #FFFFFF;
-  color: white;
-  padding: 20px 40px;
-  font-size: 24px;
-  cursor: pointer;
-  font-family: Open Sans;
-  font-style: nomal;
-  font-weight: 200;
-  border-radius: 8px;
+    background-color: rgba(255,255,255,.25);
+    border: 1px solid #FFFFFF;
+    color: white;
+    padding: 8px 19px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Open Sans;
+    font-style: nomal;
+    font-weight: 200;
+    border-radius: 8px;
 }
 
 .label {
@@ -96,9 +95,10 @@ body, html {
   color: white;
   text-align: center;
   background: rgba(255,255,255,0.1);
-
   animation: shadow-pulse 1s infinite;
 }
+
+
 
 @keyframes shadow-pulse
 {
@@ -127,7 +127,7 @@ body, html {
 }
 
 #progressBar {
-  width: 10%;
+  width: 0%;
   height: 30px;
   background-color: rgba(255,255,255,.25);
   text-align: center; /* To center it horizontally (if you want) */
@@ -137,4 +137,41 @@ body, html {
   font-style: normal;
   font-weight: 200;
   font-size: 14px;
+}
+
+
+
+.Addressbtn {
+  background-color: rgba(255,255,255,.25);
+  border: 1px solid #FFFFFF;
+  color: white;
+  padding: 8px 19px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: Open Sans;
+  font-style: nomal;
+  font-weight: 200;
+  border-radius: 8px;
+}
+
+.form_field{
+    width: 60%;
+    background: rgba(255,255,255,.6);
+    color: $input-text-color;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+    border: 0;
+    outline: 0;
+    padding: 10px 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 14px;
+  }
+
+.container {
+    position: fixed;
+    top: 60%;
+    left: 20%;
+
 }

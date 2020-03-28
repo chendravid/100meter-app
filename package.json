@@ -22,6 +22,7 @@
   "homepage": "https://github.com/chendravid/App#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "heroku-ssl-redirect": "0.0.4"
+    "heroku-ssl-redirect": "0.0.4",
+    "node-geocoder": "^3.26.0"
   }
 }

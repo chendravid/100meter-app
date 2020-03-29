@@ -1,6 +1,6 @@
-# 100meter
+# 100meter.me
  
-A (very) simple web app for checking the distance you travelled from a set point (Which should be your home unless you're naughty).
+A (very) simple web app for checking how far you are from an address.
 
 Created to help comply with new Israeli COVID-19 regulations, requiring citizens to remain no more than 100m from home. Not accurate due to browser GPS limitations. Use at own risk.
 

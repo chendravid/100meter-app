@@ -16,8 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 
-<!-- call Google maps api. Don't try ripping the key, it's secured :) -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnyEYViOgWdabL9DsgcnGGZSsj286cnYc&libraries=places"> </script>
+<!-- Call Google maps api. Don't bother trying to rip the key. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClH-BB6486D5SJVDon_lKdkuCx9Ewx1Sg&libraries=places"> </script>
 
 </head>
 
@@ -29,6 +29,7 @@
   <div id="progress">
     <div id="progressBar"></div>
   </div>
+  </div>
 
   <div class="status" id="status"> Please set home adress </div>
 
@@ -39,25 +40,28 @@
 
 <div class="container" id="searchDiv">
   <div class="searchDiv">
-     <input type="text" id="searchTextField"  class="form_field" required />
+     <input type="text" id="searchTextField" class="form_field" required />
+     <div class="slideContainer">
+       <div class="sliderTitle"> Maximum Distance </div>
+      <input type="range" min="1" max="1000" value="500" class="slider" id="distanceField">
+      <!-- <div id="sliderValue" class="sliderValue"></div> -->
+      <div class="sliderValue">
+      <span id="sliderValue" class="sliderValue"></span>m<p>
+      </div>
+    </div>
       <button class="Addressbtn" onclick="saveAddress()"> Save </button>
   </div>
 </div>
-
-<!-- Just for testing local storage
-<div>
-  <button onclick="clearLocalCache()"> clear address </button>
-</div> -->
-      
+     
 <div class="footer">
-  <div class="footerText"> This app is not really accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter-app">Contribute your code</a>
+  <div class="footerText"> This app is not very accurate. Please be safe. <p> No rights reserved, Chen Ravid 2020 <p style="font-size: 12px"> <a href="https://github.com/chendravid/100meter-app">Contribute your code</a>
 </div>
 
 
 <!-- call js functionas and stuff -->
 <script src="scripts.js"></script>
 
-<!-- for address autocomplete purposes -->
+<!-- Address autocomplete listener -->
 <script type="text/javascript">
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>

@@ -1,5 +1,3 @@
-//js stuff
-
 // check for Geolocation support on device
 if (navigator.geolocation) {
   console.log('Geolocation is supported!');
@@ -7,6 +5,18 @@ if (navigator.geolocation) {
 else {
   console.log('Geolocation is not supported for this Browser/OS version yet.');
 }
+
+
+
+//set distance slider
+var slider = document.getElementById("distanceField");
+var output = document.getElementById("sliderValue");
+output.innerHTML = slider.value; // Display the default slider value
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
 
 //init stuff
 var distance;
@@ -31,6 +41,7 @@ else
 console.log("LS address:"+ localStorage['address']);
 console.log("LS lat:"+ localStorage['savedLat']);
 console.log("LS long:"+ localStorage['savedLong']);
+console.log("Max distance:" + localStorage['distanceLimit']);
 
 
 //init google autocomplete
@@ -42,13 +53,14 @@ function initialize() {
 
 //save user input to local storage
 function saveAddress(){
-  localStorage['address'] = document.getElementById('searchTextField').value;
-  console.log("saved address to local storage:"+ localStorage['address']);
+  localStorage['address'] = document.getElementById('searchTextField').value; //get address
+  localStorage['distanceLimit'] = document.getElementById("distanceField").value; //get slider value for max distance
+  console.log("saved data to local storage. Address:"+ localStorage['address'] +" Max distance:"+ localStorage['distanceLimit']); //just checking
   geoCoder();
   restart();
 }
 
-
+//toggle user input div visiblity if the user wants to set an address
 function showAddress(){
   var searchDiv = document.getElementById("searchDiv");
   if (searchDiv.style.display === "none") {
@@ -79,11 +91,11 @@ function trackLocation(){
     
 
     //update progress bar
-    if (distance >= 100) {
+    if (distance >= localStorage['distanceLimit']) {
           
           progBar.style.width = 100 + "%";
           progBar.innerHTML = "Too Far!";
-          window.navigator.vibrate(200);
+          //window.navigator.vibrate(200);
           
           } else {
 
@@ -91,8 +103,9 @@ function trackLocation(){
                 progBar.style.width = 0 + "%";
           } else
           {
-                progBar.style.width = distance + "%";
-                progBar.innerHTML = "";        
+            console.log("progress value=" + Math.round(distance / localStorage['distanceLimit']*100) + "%")
+                progBar.style.width = Math.round(distance / localStorage['distanceLimit']*100) + "%";
+                progBar.innerHTML = distance + 'm'+'\\' + localStorage['distanceLimit']+'m';        
           }
 
           }
@@ -114,7 +127,7 @@ function geoCoder(){
   });
 }
 
-//some math
+//some math I didn't actually think of myself
 function calculateDistance(lat1, lon1, lat2, lon2) {
     var R = 6371e3; // m
     var dLat = (lat2 - lat1).toRad();
@@ -135,8 +148,3 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function restart(){
   location.reload();
 }
-
-/*//just for testing local storage. Not used in prod.
-function clearLocalCache(){
-  localStorage.clear();
-}*/

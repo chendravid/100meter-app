@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+require('dotenv').config()
+
 //get heroku port or use localhost
 var port = process.env.PORT || 8080;
 
